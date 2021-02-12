@@ -1,0 +1,62 @@
+
+html, body{
+	/* Background pattern from Toptal Subtle Patterns */
+	background-image: url("images/triangle-mosaic.png");
+	font-size: 15px;
+	font-family: Verdana, Geneva, sans-serif;
+	line-height: 1.5;
+	height: 100%;
+	
+}
+#container{
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	height: 100%; 
+}
+#logo{
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding: 15px;
+}
+#menu{
+	width: 160px;
+	background-color: lightgray;
+	float: left;
+	padding: 10px;
+	text-align: center;	
+}
+#products{
+	float: left;
+	padding:10px;
+	width: 800px;
+	background-color: lightblue;
+}
+
+#footer{
+	clear: both;
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding: 20px;
+		
+}
+#box {
+     display: flex;
+}
+
+table{
+width: 800px;
+text-align: center;
+font-size: 15px;
+border-collapse: collapse;
+padding: 10px;
+}
+table, td, th {
+  border: 1px solid black;
+}
+a:hover {
+  color: orange;
+}
+
