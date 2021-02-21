@@ -1,9 +1,9 @@
 <?php
-$imie = $nazwisko = $adres = $email = '';
-$imieerr = $nazwiskoerr = $adreserr = $emailerr = $telefonerr = '';
+$imie = $nazwisko = $city =  $adres = $zip = $email = '';
+$imieerr = $nazwiskoerr = $cityerr = $adreserr = $ziperr = $emailerr = $telefonerr = '';
 (int)$telefon = NULL;
 
-if (isset($_POST) && !empty($_POST)) {
+if (isset($_POST) && !empty($_POST) && isset($_POST['ptw'])) {
     if (empty($_POST["imie"])) {
         $imieerr = "Nie podano imienia.";
     } else {
@@ -24,6 +24,16 @@ if (isset($_POST) && !empty($_POST)) {
         }
     }
     
+    if (empty($_POST["city"])) {
+        $cityerr = "Nie podano miasta.";
+    } else {
+        $city = validate($_POST["city"]);
+        
+        if (preg_match("/[^A-Za-z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ\\.\\,\\/ -]/",$city)) {
+            $cityerr = "Użyto niedozwolonych znaków.";
+        }
+    }
+    
     if (empty($_POST["adres"])) {
         $adreserr = "Nie podano adresu.";
     } else {
@@ -31,6 +41,16 @@ if (isset($_POST) && !empty($_POST)) {
         
         if (preg_match("/[^A-Za-z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ\\.\\,\\/ -]/",$adres)) {
             $adreserr = "Użyto niedozwolonych znaków.";
+        }
+    }
+    
+    if (empty($_POST["zip"])) {
+        $ziperr = "Nie podano kodu pocztowego.";
+    } else {
+        $zip = validate($_POST["zip"]);
+        
+        if (!preg_match("/[^0-9\-]/",$zip)) {
+            $ziperr = "Użyto niedozwolonych znaków.";
         }
     }
         
@@ -76,8 +96,9 @@ if ($liczba_w_koszyku) {
 
 if (isset($_POST['ptw']) && isset($_SESSION['koszyk']) && !empty($_SESSION['koszyk'])) {
     if(empty($imieerr) && empty($nazwiskoerr) && empty($adreserr) && empty($emailerr) && empty($telefonerr)){
-        $polecenie = $pdo->prepare('INSERT INTO `zamowienia`(`imie`, `nazwisko`, `adres`, `email`, `telefon`) VALUES (?,?,?,?,?)');
-        $polecenie->execute([$imie, $nazwisko, $adres, $email, $telefon]);
+        $polecenie = $pdo->prepare('INSERT INTO zamowienia(login, imie, nazwisko, city, adres, zip, email, telefon) VALUES (?,?,?,?,?,?,?,?)');
+        $unlogged = 'unlogged';
+        $polecenie->execute([$unlogged, $imie, $nazwisko, $city, $adres, $zip, $email, $telefon]);
         $zam_id = $pdo->lastInsertId();
         $message='';
         foreach($produkty as $produkt){
@@ -94,8 +115,30 @@ if (isset($_POST['ptw']) && isset($_SESSION['koszyk']) && !empty($_SESSION['kosz
         header('Location: index.php?page=podziekowanie');
         exit;
     }
-} 
-
+}
+if (isset($_POST['loggedptw']) && isset($_SESSION['koszyk']) && !empty($_SESSION['koszyk'])) {
+    $polecenie = $pdo->prepare('SELECT login, imie, nazwisko, city, adres, zip, email, phone FROM users WHERE login = ?');
+    $polecenie->execute([$_SESSION['user']]);
+    $data = $polecenie->fetch(PDO::FETCH_ASSOC);
+    echo $data;
+    $polecenie = $pdo->prepare('INSERT INTO zamowienia(login, imie, nazwisko, city, adres, zip, email, telefon) VALUES (?,?,?,?,?,?,?,?)');
+    $polecenie->execute([$data['login'], $data['imie'], $data['nazwisko'], $data['city'], $data['adres'], $data['zip'], $data['email'], $data['phone']]);
+    $zam_id = $pdo->lastInsertId();
+    $message='';
+    foreach($produkty as $produkt){
+        $message = $message.$produkt['nazwa'].'  '.$produkt['cena'].'  '.$liczba_w_koszyku[$produkt['id']].'  '.$produkt['cena'] * $liczba_w_koszyku[$produkt['id']].'PLN'.PHP_EOL;
+        $polecenie = $pdo->prepare('INSERT INTO `zamowienia_produkty`(zam_id, prod_id, ilosc_prod) VALUES (?,?,?)');
+        $polecenie->execute([$zam_id, $produkt['id'], $liczba_w_koszyku[$produkt['id']]]);
+    }
+    $message = $message.'Razem:  '.$wSumie.'PLN';
+    $to='zamowienia@pseudosklep.com';
+    $subject='Zamówienie';
+    mail($to, $subject, $message);
+    unset($_POST);
+    unset($_SESSION['koszyk']);
+    header('Location: index.php?page=podziekowanie');
+    exit; 
+}
 ?>
 
 <?=template_header('Potwierdzenie')?>
@@ -129,7 +172,28 @@ if (isset($_POST['ptw']) && isset($_SESSION['koszyk']) && !empty($_SESSION['kosz
         <span class="text">Razem:</span>
         <span class="price"><?=$wSumie?>&#122;&#322;</span>
     </div>
+    <?php 
+    if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
+        echo <<<EOT
+            <form action="index.php?page=zam" method="post" class="daneosobowe">
+                <div>
+                    <button type="submit" name="loggedptw">Potwierdz</button>
+                </div>
+            </form> 
+        EOT;   
+    }else{
+        echo <<<EOT
+        <a href="index.php?page=usrlogin">Zaloguj się</a> TO DO zrobić z tego przycisk
+        EOT;
+    }    
+    ?>
+    
     <form action="index.php?page=zam" method="post" class="daneosobowe">
+        <div>
+            <h1>
+                Zamów bez logowania.
+            </h1>
+        </div>
         <div>
             <label>Imie: </label>
             <input type="text" name="imie" value="<?=$imie ?>">
@@ -141,9 +205,19 @@ if (isset($_POST['ptw']) && isset($_SESSION['koszyk']) && !empty($_SESSION['kosz
             <span class="error">*<?=$nazwiskoerr ?></span>
         </div>
         <div>
+            <label>Miasto: </label>
+            <input type="text" name="city" value="<?=$city ?>">
+            <span class="error">*<?=$cityerr ?></span>
+        </div>
+        <div>
             <label>Adres: </label>
             <input type="text" name="adres" value="<?=$adres ?>">
             <span class="error">*<?=$adreserr ?></span>
+        </div>
+        <div>
+            <label>Kod pocztowy: </label>
+            <input type="text" name="zip" value="<?=$zip ?>">
+            <span class="error">*<?=$ziperr ?></span>
         </div>
         <div>
             <label>Email: </label>

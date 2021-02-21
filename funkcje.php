@@ -26,9 +26,10 @@ echo <<<EOT
 	<body>
         <header>
             <div class="content-wrapper">
-                <h1>Pseudosklep</h1>
                 <nav>
-                    <a href="index.php">Home</a>
+                    <div>
+                        <a href="index.php">Pseudoskelp</a>
+                    </div>
                     <div class="dropdown">
                         <button class="dropbtn">Produkty</button>
                         <div class="dropdown-content">
@@ -43,11 +44,28 @@ foreach($kategorie as $kategoria){
 echo <<<EOT
                         </div>
                     </div>
+                    <div>
+                        <a href="index.php">Promocje</a>
+                    </div>
+                    <div>
+                        <a href="index.php">Kontakt</a>
+                    </div>
                 </nav>
+
                 <div class="link-icons">
-                    <a href="index.php?page=koszyk">
-						<i class="fas fa-shopping-cart"></i>
-					</a>
+EOT;
+if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])){//////admin zmienić na user
+    echo <<<EOT
+                    <a href="index.php?page=usrpanel"><i class="fas fa-user"></i></a>
+    EOT;  
+}else{   
+    echo <<<EOT
+                    <a href="index.php?page=usrlogin"><i class="fas fa-user"></i></a>
+    EOT;  
+}
+
+echo <<<EOT
+                    <a href="index.php?page=koszyk"><i class="fas fa-shopping-cart"></i></a>
                 </div>
             </div>
         </header>
@@ -67,9 +85,8 @@ echo <<<EOT
 	<body>
         <header>
             <div class="content-wrapper">
-                <h1>Pseudosklep</h1>
                 <nav>
-                    <a href="index.php">Home</a>
+                    <a href="index.php">Pseudosklep</a>
 EOT;
 if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])){
 echo <<<EOT

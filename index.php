@@ -12,6 +12,12 @@ if (isset($_GET['logout']) && !empty($_GET['logout'])) {
 	header("location: index.php");
         exit;
 }
+if (isset($_GET['usrlogout']) && !empty($_GET['usrlogout'])) {
+	session_destroy();
+	unset($_SESSION['user']);
+	header("location: index.php");
+        exit;
+}
 if(($page == 'panel' || $page == 'zamowienia' || $page == 'kategorie')){
     if(!(isset($_SESSION['admin']) && !empty($_SESSION['admin']))){
         $page = 'home';
