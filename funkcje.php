@@ -28,7 +28,7 @@ echo <<<EOT
             <div class="content-wrapper">
                 <nav>
                     <div>
-                        <a href="index.php">Pseudoskelp</a>
+                        <a href="index.php">Pseudosklep</a>
                     </div>
                     <div class="dropdown">
                         <button class="dropbtn">Produkty</button>
@@ -48,7 +48,7 @@ echo <<<EOT
                         <a href="index.php">Promocje</a>
                     </div>
                     <div>
-                        <a href="index.php">Kontakt</a>
+                        <a href="index.php?page=kontakt">Kontakt</a>
                     </div>
                 </nav>
 

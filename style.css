@@ -522,6 +522,7 @@ main .admlogin button:hover {
     margin-left: 70px;
 }
 .panel button{
+    border-radius: 5px;
     width: 110px;
     text-align: center;
     padding-bottom: 20px; 
@@ -538,6 +539,7 @@ main .admlogin button:hover {
     background: #434f61;
 }
 .zamowienia button{
+    border-radius: 5px;
     width: 110px;
     text-align: center;
     padding-bottom: 20px; 
@@ -554,6 +556,7 @@ main .admlogin button:hover {
     background: #434f61;
 }
 .kategorie button{
+    border-radius: 5px;
     width: 110px;
     text-align: center;
     padding-bottom: 20px; 
@@ -573,6 +576,7 @@ main .admlogin button:hover {
     color: #FF0000;
 }
 .button{
+    border-radius: 5px;
     text-decoration: none;
     width: 110px;
     text-align: center; 
@@ -587,4 +591,43 @@ main .admlogin button:hover {
 }
 .button:hover{
     background: #434f61;
+}
+
+.usrpanel a{
+    border-radius: 5px;
+    text-decoration: none;
+    width: 110px;
+    text-align: center; 
+    margin-left: 5px;
+    padding: 13px 20px 11px 20px;
+    border: none;
+    background: #4e5c70;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer; 
+}
+
+.usrpanel a:hover{
+    background: #434f61;
+}
+
+.kontakt .daneosobowe input[name="wiadomosc"]{
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+
+.usrpanel .usrbuttons  > div {
+    display: inline-block;
+    display: -moz-inline-box;
+    *display: inline; 
+    zoom: 1; 
+    width: 24.5%;
+    text-align: center;
 }

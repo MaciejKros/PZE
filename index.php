@@ -6,13 +6,13 @@ $pdo = pdoConnect();
 
 $page = isset($_GET['page']) && file_exists($_GET['page'] . '.php') ? $_GET['page'] : 'home';
 
-if (isset($_GET['logout']) && !empty($_GET['logout'])) {
+if (isset($_GET['logout']) && !empty($_GET['logout']) && is_numeric($_GET['logout'])) {
 	session_destroy();
 	unset($_SESSION['admin']);
 	header("location: index.php");
         exit;
 }
-if (isset($_GET['usrlogout']) && !empty($_GET['usrlogout'])) {
+if (isset($_GET['usrlogout']) && !empty($_GET['usrlogout']) && is_numeric($_GET['usrlogout'])) {
 	session_destroy();
 	unset($_SESSION['user']);
 	header("location: index.php");

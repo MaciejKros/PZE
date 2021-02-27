@@ -135,9 +135,9 @@ if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
             <label>Numer telefonu:</label>
             <input type="tel" name="phone" value="<?= $phone;?>" pattern="[0-9]{9}" required>
         </div>
-        <div>
+        <div class="error">
             <?=$register_error ?>
-        </div>
+        </div><br>
         <div>
             <button type="submit" name="usradd">Zarejestruj</button>
         </div>        

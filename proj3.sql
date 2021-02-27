@@ -193,7 +193,7 @@ CREATE TABLE `zamowienia` (
 
 LOCK TABLES `zamowienia` WRITE;
 /*!40000 ALTER TABLE `zamowienia` DISABLE KEYS */;
-INSERT INTO `zamowienia` VALUES (1,'aaaaaa','Aaaa','Eeeeee','','aaaaaaaaaaaa','','asda@aaa.aaa',123123125,'done','2020-02-03 19:59:06'),(2,'aaaaaa','Aaaa','Bbbb','','aaaaaaaaaaaa','','aa@aa.aaaaa',321321321,'pending','2020-02-03 21:58:10'),(3,'bbbbbb','Rrrrrr','Ffffff','','adfsadf 222/43','','ee@ee.ee',432432423,'sent','2020-02-03 22:05:56'),(4,'bbbbbb','Aaaa','sdada','','wqeqwe522','','aa@aa.aa',323232323,'pending','2020-02-04 00:26:36'),(8,'unlogged','aaaa','aaa','aaaa','ccc 33','33-123','cc@cc.cc',134123123,'pending','2021-02-21 23:57:37'),(9,'aaaaaa','aaaaaa','aaaaaa','aaa','aaa 12','12-123','aa@aa.aa',123123123,'pending','2021-02-22 00:29:30');
+INSERT INTO `zamowienia` VALUES (1,'aaaaaa','Aaaa','Eeeeee','','aaaaaaaaaaaa','','asda@aaa.aaa',123123125,'done','2020-02-03 19:59:06'),(2,'aaaaaa','Aaaa','Bbbb','miasto','aaaaaaaaa','321-12','aa@aa.aaaaa',321321321,'pending','2020-02-03 21:58:10'),(3,'bbbbbb','Rrrrrr','Ffffff','','adfsadf 222/43','','ee@ee.ee',432432423,'sent','2020-02-03 22:05:56'),(4,'bbbbbb','Aaaa','sdada','','wqeqwe522','','aa@aa.aa',323232323,'pending','2020-02-04 00:26:36'),(8,'unlogged','aaaa','aaa','aaaa','ccc 33','33-123','cc@cc.cc',134123123,'pending','2021-02-21 23:57:37'),(9,'aaaaaa','aaaaaa','aaaaaa','aaa','aaa 12','12-123','aa@aa.aa',123123123,'pending','2021-02-22 00:29:30');
 /*!40000 ALTER TABLE `zamowienia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,4 +234,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-22  0:40:05
+-- Dump completed on 2021-02-27  3:39:48
