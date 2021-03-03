@@ -1,16 +1,12 @@
 <?php
-$polecenie = $pdo->prepare('SELECT * FROM produkty ORDER BY data DESC LIMIT 4');
+$polecenie = $pdo->prepare('SELECT * FROM produkty WHERE staracena IS NOT NULL ');
 $polecenie->execute();
 $produkty = $polecenie->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<?=template_header('Home')?>
-
-<div class="featured">
-    <h2>Pseudosklep</h2>
-</div>
+<?=template_header('Promocje')?>
 <div class="recentlyadded content-wrapper">
-    <h2>Nowości:</h2>
+    <h2>Promocje:</h2>
     <div class="products">
         <?php foreach ($produkty as $produkt): ?>
         <a href="index.php?page=produkt&id=<?=$produkt['id']?>" class="product">

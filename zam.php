@@ -136,7 +136,7 @@ if (isset($_POST['loggedptw']) && isset($_SESSION['koszyk']) && !empty($_SESSION
     mail($to, $subject, $message);
     unset($_POST);
     unset($_SESSION['koszyk']);
-    header('Location: index.php?page=podziekowanie');
+    header('Location: index.php?page=usrpanel');
     exit; 
 }
 ?>

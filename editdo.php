@@ -35,11 +35,7 @@ if(isset($_POST['usrupdate'])){
 
 <?=template_header('Edytuj dane osobowe')?>
 <div class="admlogin content-wrapper usrpanel">
-    <br>
-    <div class="usrbuttons">
-        <div style="width: 49%;"><a href="index.php?page=usrpanel">Wróć do panelu użytkownika</a></div>
-        <div style="width: 49%;"><a href="index.php?usrlogout=1">Wyloguj</a></div>
-    </div><br>
+    <?=usrpanel_menubar(); ?>
     <h1>Edytuj dane osobowe.</h1>
     <form action="index.php?page=editdo" method="post">
         <div>
@@ -48,11 +44,11 @@ if(isset($_POST['usrupdate'])){
         </div>
         <div>
             <label>Imie:</label>
-            <input type="text" name="imie" pattern="[a-zA-Z-]+" size="20" value="<?= $imie;?>" required>
+            <input type="text" name="imie" pattern="[a-żA-Ż0-9-]+" size="20" value="<?= $imie;?>" required>
         </div>
         <div>
             <label>Nazwisko:</label>
-            <input type="text" name="nazwisko" pattern="[a-zA-Z-]+" size="20" value="<?= $nazwisko;?>" required>
+            <input type="text" name="nazwisko" pattern="[a-żA-Ż0-9-]+" size="20" value="<?= $nazwisko;?>" required>
         </div>
         <div>
             <label>Miasto:</label>

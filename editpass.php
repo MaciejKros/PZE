@@ -14,7 +14,9 @@ if(isset($_POST['passupdate'])){
     else if($newpassword1 != $newpassword2)
         $error = 'Podane hasła nie są takie same.';
     else if(strlen($newpassword1)<6)
-        $error = 'Hasło jest za krótkie. Przynajmniej 6 znaków.';    
+        $error = 'Hasło jest za krótkie. Przynajmniej 6 znaków.';
+    else if($newpassword1 == $password)
+        $error = 'Nowe i stare hasła są takie same.';
     else{
         $polecenie = $pdo->prepare('Select login FROM users WHERE login = ? AND password = ?');
         $polecenie->execute([$_SESSION['user'], $password]);
@@ -34,11 +36,7 @@ if(isset($_POST['passupdate'])){
 <?=template_header('Zmień hasło')?>
 
 <div class="admlogin content-wrapper usrpanel">
-    <br>
-    <div class="usrbuttons">
-        <div style="width: 49%;"><a href="index.php?page=usrpanel">Wróć do panelu użytkownika</a></div>
-        <div style="width: 49%;"><a href="index.php?usrlogout=1">Wyloguj</a></div>
-    </div><br>
+    <?=usrpanel_menubar(); ?>
     <form action="index.php?page=editpass" method="post">
         <div>
             <label>Nowe Hasło:</label>
@@ -52,12 +50,12 @@ if(isset($_POST['passupdate'])){
             <label>Stare hasło:</label>
             <input type="password" name="password" size="20" required>
         </div>
-        <div class="error">
-            <?=$error ?>
-        </div><br>
         <div>
             <button type="submit" name="passupdate">Zmień hasło</button>
-        </div>        
+        </div><br>      
+        <div class="error">
+            <?=$error ?>
+        </div>  
     </form>
 </div>
 

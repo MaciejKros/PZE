@@ -4,7 +4,7 @@ if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
     exit;
 }
 
-$polecenie = $pdo->prepare('SELECT * FROM zamowienia WHERE login = ? AND status = ?');
+$polecenie = $pdo->prepare('SELECT * FROM zamowienia WHERE login = ? AND status = ? ORDER BY data DESC');
 $polecenie->execute([$_SESSION['user'], 'done']);
 $zamowienia = $polecenie->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -13,11 +13,7 @@ $zamowienia = $polecenie->fetchAll(PDO::FETCH_ASSOC);
 <?=template_header('Historia zamówień')?>
 
 <div class="content-wrapper usrpanel zamowienia">
-    <br>
-    <div class="usrbuttons">
-        <div style="width: 49%;"><a href="index.php?page=usrpanel">Wróć do panelu użytkownika</a></div>
-        <div style="width: 49%;"><a href="index.php?usrlogout=1">Wyloguj</a></div>
-    </div><br>
+    <?=usrpanel_menubar(); ?>
     <?php 
     if(!empty($zamowienia)){
         echo <<<EOT
@@ -28,11 +24,8 @@ $zamowienia = $polecenie->fetchAll(PDO::FETCH_ASSOC);
     <?php foreach($zamowienia as $zamowienie): ?>
         <h3>Zamówienie <?=$zamowienie['id'] ?></h3>
         Status: <?php 
-        if($zamowienie['status'] == 'pending'){
-            echo 'W trakcie realizacji';
-        } else {
-            echo 'Wysłane';
-        }
+        if($zamowienie['status'] == 'done')
+            echo 'Zakończone';
         ?>
         <br>
         Dane do przesyłki:

@@ -97,43 +97,53 @@ if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
     <form action="index.php?page=usrlogin" method="post">
         <div>
             <label>Login:</label>
-            <input type="text" name="newlogin" pattern="[a-zA-Z0-9-]+" size="20" value="<?= $newlogin;?>" required>
+            <input type="text" name="newlogin" pattern="[a-żA-Ż0-9-]+" size="20" value="<?= $newlogin;?>" required>
+            <span class="error">*</span>
         </div>
         <div>
             <label>Hasło:</label>
             <input type="password" name="password1" size="20" required>
+            <span class="error">*</span>
         </div>
         <div>
             <label>Powtórz hasło:</label>
             <input type="password" name="password2" size="20" required>
+            <span class="error">*</span>
         </div>
         <div>
             <label>Email:</label>
             <input type="email" name="email" value="<?= $email;?>" size="30" required>
+            <span class="error">*</span>
         </div>
         <div>
             <label>Imie:</label>
-            <input type="text" name="imie" pattern="[a-zA-Z-]+" size="20" value="<?= $imie;?>" required>
+            <input type="text" name="imie" pattern="[a-żA-Ż0-9-]+" size="20" value="<?= $imie;?>" required>
+            <span class="error">*</span>
         </div>
         <div>
             <label>Nazwisko:</label>
-            <input type="text" name="nazwisko" pattern="[a-zA-Z-]+" size="20" value="<?= $nazwisko;?>" required>
+            <input type="text" name="nazwisko" pattern="[a-żA-Ż0-9-]+" size="20" value="<?= $nazwisko;?>" required>
+            <span class="error">*</span>
         </div>
         <div>
             <label>Miasto:</label>
             <input type="text" name="city" value="<?= $city;?>" size="30" required>
+            <span class="error">*</span>
         </div>
         <div>
             <label>Adres:</label>
             <input type="text" name="adres" value="<?= $adres;?>" size="30" required>
+            <span class="error">*</span>
         </div>
         <div>
             <label>Kod pocztowy:</label>
             <input type="text" name="zip" value="<?= $zip;?>" pattern="[0-9\-]*" required>
+            <span class="error">*</span>
         </div>
         <div>
             <label>Numer telefonu:</label>
             <input type="tel" name="phone" value="<?= $phone;?>" pattern="[0-9]{9}" required>
+            <span class="error">*</span>
         </div>
         <div class="error">
             <?=$register_error ?>

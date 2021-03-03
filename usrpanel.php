@@ -4,7 +4,7 @@ if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
     exit;
 }
 
-$polecenie = $pdo->prepare('SELECT * FROM zamowienia WHERE login = ? AND NOT status = ?');
+$polecenie = $pdo->prepare('SELECT * FROM zamowienia WHERE login = ? AND NOT status = ? ORDER BY data DESC');
 $polecenie->execute([$_SESSION['user'], 'done']);
 $zamowienia = $polecenie->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -12,17 +12,7 @@ $zamowienia = $polecenie->fetchAll(PDO::FETCH_ASSOC);
 <?=template_header('Panel użytkownika')?>
 
 <div class="content-wrapper usrpanel zamowienia">
-    <br>
-    <div class="usrbuttons">
-        <div><a href="index.php?page=editdo">Edytuj dane osobowe</a></div>
-        <div><a href="index.php?page=editpass">Zmień hasło</a></div>
-        <div><a href="index.php?page=ordershistory">Historia zamówień</a></div>
-        <div><a href="index.php?usrlogout=1">Wyloguj</a></div>
-    </div>
-    <br><br>
-    TO DO: ustalić układ i CSS panelu
-    <br><br>
-    TO DO: wyświetlanie aktualne dane osobowe albo zostawić jak jest czyli podgląd w edycji
+    <?=usrpanel_menubar(); ?>
     <?php 
     if(!empty($zamowienia)){
         echo <<<EOT

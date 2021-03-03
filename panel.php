@@ -11,8 +11,8 @@ if(isset($_POST['add'])){
         move_uploaded_file($filetmp,"imgs/".$filename);
     } else 
         $filename = '';
-    $polecenie = $pdo->prepare('INSERT INTO `produkty`(`nazwa`, `cena`, `opis`, `img`) VALUES (?,?,?,?)');
-    $input=array($_POST['nazwa'], $_POST['cena'], $_POST['opis'], $filename);
+    $polecenie = $pdo->prepare('INSERT INTO `produkty`(`nazwa`, `cena`, staracena, `opis`, `img`) VALUES (?,?,?,?,?)');
+    $input=array($_POST['nazwa'], $_POST['cena'], $_POST['staracena'], $_POST['opis'], $filename);
     $polecenie->execute($input);
     unset($_POST);
     unset($_FILES);
@@ -21,8 +21,8 @@ if(isset($_POST['add'])){
 }
 //zapisywanie edycji do bazy
 if(isset($_POST['update']) && is_numeric($_POST['update'])){
-    $polecenie = $pdo->prepare('UPDATE `produkty` SET `nazwa`=?,`cena`=?,`opis`=?,`img`=? WHERE id=? ');
-    $input=array($_POST['nazwa'], $_POST['cena'], $_POST['opis'], $_POST['img'], $_POST['update']);
+    $polecenie = $pdo->prepare('UPDATE `produkty` SET `nazwa`=?,`cena`=?, staracena=?, `opis`=?,`img`=? WHERE id=? ');
+    $input=array($_POST['nazwa'], $_POST['cena'], $_POST['staracena'], $_POST['opis'], $_POST['img'], $_POST['update']);
     $polecenie->execute($input);
     unset($_POST);
     header('location: index.php?page=panel');
@@ -43,13 +43,14 @@ if(isset($_GET['remove']) && is_numeric($_GET['remove'])){
 ?>
 
 <?=template_header_adm('Panel administracyjny')?>
-<div class='content-wrapper panel'>
+<div class='panel content-wrapper'>
     <table>
         <thead>
             <tr>
                 <td>Id</td>
                 <td>Nazwa</td>
                 <td>Cena</td>
+                <td>Stara cena</td>
                 <td>Opis</td>
                 <td>Img</td>
                 <td>Data dodania</td>
@@ -64,6 +65,7 @@ if(isset($_GET['remove']) && is_numeric($_GET['remove'])){
                 <td><?=$produkt['id'] ?></td>
                 <td><input type="text" name="nazwa" value="<?=$produkt['nazwa'] ?>"></td>
                 <td><input type="number" name="cena" value="<?=$produkt['cena'] ?>" placeholder="<?=$produkt['cena'] ?>" step="0.01"></td>
+                <td><input type="number" name="staracena" value="<?=$produkt['staracena'] ?>" placeholder="<?=$produkt['staracena'] ?>" step="0.01"></td>
                 <td><input type="text" name="opis" value="<?=$produkt['opis'] ?>"></td>
                 <td><input type="text" name="img" value="<?=$produkt['img'] ?>"></td>
                 <td><?=$produkt['data'] ?></td>
@@ -77,6 +79,7 @@ if(isset($_GET['remove']) && is_numeric($_GET['remove'])){
                 <td></td>
                 <td><input type="text" name="nazwa" required></td>
                 <td><input type="number" name="cena" step="0.01" required></td>
+                <td><input type="number" name="staracena" step="0.01" required></td>
                 <td><input type="text" name="opis" ></td>
                 <td><input type="file" name="img" ></td>
                 <td></td>

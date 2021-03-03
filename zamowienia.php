@@ -9,8 +9,8 @@ $max_id = $polecenie->fetch(PDO::FETCH_ASSOC);
 $max_id = array_pop($max_id);
 //dodawanie zamówienia
 if(isset($_POST['add'])){
-    $polecenie = $pdo->prepare('INSERT INTO `zamowienia`(`imie`, `nazwisko`, `adres`, `email`, `telefon`) VALUES (?,?,?,?,?)');
-    $input=array($_POST['imie'], $_POST['nazwisko'], $_POST['adres'], $_POST['email'], $_POST['telefon']);
+    $polecenie = $pdo->prepare('INSERT INTO `zamowienia`(login, `imie`, `nazwisko`, city, `adres`, zip, `email`, `telefon`, status) VALUES (?,?,?,?,?,?,?,?,?)');
+    $input=array($_POST['login'], $_POST['imie'], $_POST['nazwisko'], $_POST['city'], $_POST['adres'], $_POST['zip'], $_POST['email'], $_POST['telefon'], $_POST['status']);
     $polecenie->execute($input);
     unset($_POST);
     header('location: index.php?page=zamowienia');
@@ -18,8 +18,8 @@ if(isset($_POST['add'])){
 }
 //edycja zamówienia
 if(isset($_POST['update']) && is_numeric($_POST['update'])){
-    $polecenie = $pdo->prepare('UPDATE `zamowienia` SET `imie`=?,`nazwisko`=?,`adres`=?,`email`=?,`telefon`=? WHERE id=? ');
-    $input=array($_POST['imie'], $_POST['nazwisko'], $_POST['adres'], $_POST['email'], $_POST['telefon'], $_POST['update']);
+    $polecenie = $pdo->prepare('UPDATE `zamowienia` SET login=?, `imie`=?,`nazwisko`=?, city=?, `adres`=?, zip=?, `email`=?,`telefon`=?, status=? WHERE id=? ');
+    $input=array($_POST['login'], $_POST['imie'], $_POST['nazwisko'], $_POST['city'], $_POST['adres'], $_POST['zip'], $_POST['email'], $_POST['telefon'], $_POST['status'], $_POST['update']);
     $polecenie->execute($input);
     unset($_POST);
     header('location: index.php?page=zamowienia');
@@ -79,15 +79,19 @@ if(isset($_GET['remove_prod']) && is_numeric($_GET['remove_prod']) && isset($_GE
 ?>
 
 <?=template_header_adm('Panel administracyjny')?>
-<div class='content-wrapper zamowienia'>
+<div class='zamowienia' style="margin: 0 100px">
     <table>
             <tr class='naglowek_tabeli'>
                 <th>Id</th>
+                <th>Login</th>
                 <th>Imie</th>
                 <th>Nazwisko</th>
+                <th>Miasto</th>
                 <th>Adres</th>
+                <th>ZIP</th>
                 <th>Email</th>
                 <th>Telefon</th>
+                <th>Status</th>
                 <th>Data złożenia zamówienia</th>
                 <th class="zaktualizuj"></th>
                 <th class="usun"></th>
@@ -98,11 +102,21 @@ if(isset($_GET['remove_prod']) && is_numeric($_GET['remove_prod']) && isset($_GE
             <tr>
                 <form method="post" action="index.php?page=zamowienia">
                 <td><?=$zamowienie['id'] ?></td>
+                <td><input type="text" name="login" value="<?=$zamowienie['login'] ?>"></td>
                 <td><input type="text" name="imie" value="<?=$zamowienie['imie'] ?>"></td>
                 <td><input type="text" name="nazwisko" value="<?=$zamowienie['nazwisko'] ?>"></td>
+                <td><input type="text" name="city" value="<?=$zamowienie['city'] ?>"></td>
                 <td><input type="text" name="adres" value="<?=$zamowienie['adres'] ?>"></td>
-                <td><input type="text" name="email" value="<?=$zamowienie['email'] ?>"></td>
+                <td><input type="text" name="zip" value="<?=$zamowienie['zip'] ?>"></td>
+                <td><input type="email" name="email" value="<?=$zamowienie['email'] ?>"></td>
                 <td><input type="number" name="telefon" value="<?=$zamowienie['telefon'] ?>"></td>
+                <td>
+                    <select name="status" id="status">
+                        <option value="pending" <?=status_zam($zamowienie['status'], 'pending') ?>>W trakcie realizacji</option>
+                        <option value="sent" <?=status_zam($zamowienie['status'], 'sent') ?>>Wysłane</option>
+                        <option value="done" <?=status_zam($zamowienie['status'], 'done') ?>>Zakończone</option>
+                    </select>       
+                </td>
                 <td><?=$zamowienie['data'] ?></td>
                 <td><button type="submit" name="update" value="<?=$zamowienie['id'] ?>">Zaktualizuj</button></td>
                 </form>
@@ -114,6 +128,7 @@ if(isset($_GET['remove_prod']) && is_numeric($_GET['remove_prod']) && isset($_GE
             <th>Id</th>
             <th>Nazwa</th>
             <th>Cena</th>
+            <th>Stara cena</th>
             <th>Ilość</th>
             <th>W sumie</th>
             <th class="zaktualizuj"></th>
@@ -138,6 +153,7 @@ if(isset($_GET['remove_prod']) && is_numeric($_GET['remove_prod']) && isset($_GE
                 <td><input type="number" name="prod_id" min="1" max="<?=$max_id ?>" value="<?= $produkt['prod_id']?>"></td>
                 <td><?= $reszta_produktu['nazwa']?></td>
                 <td><?= $reszta_produktu['cena']?></td>
+                <td><?= $reszta_produktu['staracena']?></td>
                 <td><input type="number" name="ilosc_prod" min="1" value="<?= $produkt['ilosc_prod']?>"></td>
                 <td><?php echo $produkt['ilosc_prod']*$reszta_produktu['cena'];
                 $wSumie += $produkt['ilosc_prod']*$reszta_produktu['cena'];?>&#122;&#322;</td>
@@ -151,6 +167,7 @@ if(isset($_GET['remove_prod']) && is_numeric($_GET['remove_prod']) && isset($_GE
                 <form method="post" action="index.php?page=zamowienia">
                 <input type="hidden" name="zam_id" value="<?= $zamowienie['id']?>">
                 <td><input type="number" name="prod_id" max="<?=$max_id ?>" min="1"></td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td><input type="number" name="ilosc_prod" min="1"></td>
@@ -174,11 +191,21 @@ if(isset($_GET['remove_prod']) && is_numeric($_GET['remove_prod']) && isset($_GE
             <tr>
                 <form method="post" action="index.php?page=zamowienia">
                 <td></td>
+                <td><input type="text" name="login" value=""></td>
                 <td><input type="text" name="imie" value=""></td>
                 <td><input type="text" name="nazwisko" value=""></td>
+                <td><input type="text" name="city" value=""></td>
                 <td><input type="text" name="adres" value=""></td>
+                <td><input type="text" name="zip" value=""></td>
                 <td><input type="text" name="email" value=""></td>
                 <td><input type="number" name="telefon" value=""></td>
+                <td>
+                    <select name="status" id="status">
+                        <option value="pending">W trakcie realizacji</option>
+                        <option value="sent">Wysłane</option>
+                        <option value="done">Zakończone</option>
+                    </select>       
+                </td>
                 <td></td>
                 <td><button type="submit" name="add">Dodaj</button></td>
                 </form>

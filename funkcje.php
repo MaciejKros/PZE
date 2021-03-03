@@ -45,27 +45,31 @@ echo <<<EOT
                         </div>
                     </div>
                     <div>
-                        <a href="index.php">Promocje</a>
+                        <a href="index.php?page=promocje">Promocje</a>
                     </div>
                     <div>
                         <a href="index.php?page=kontakt">Kontakt</a>
                     </div>
                 </nav>
-
+                
                 <div class="link-icons">
 EOT;
-if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])){//////admin zmienić na user
+if(isset($_SESSION['user']) && !empty($_SESSION['user'])){//////admin zmienić na user
     echo <<<EOT
-                    <a href="index.php?page=usrpanel"><i class="fas fa-user"></i></a>
+                    <a href="index.php?page=usrpanel">Witaj, 
+    EOT; 
+    echo $_SESSION['user'].' ';
+    echo <<<EOT
+    <i class="fas fa-user"></i></a>
     EOT;  
 }else{   
     echo <<<EOT
-                    <a href="index.php?page=usrlogin"><i class="fas fa-user"></i></a>
+                    <a href="index.php?page=usrlogin">Zaloguj się <i class="fas fa-user"></i></a>
     EOT;  
 }
 
 echo <<<EOT
-                    <a href="index.php?page=koszyk"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="index.php?page=koszyk">Koszyk <i class="fas fa-shopping-cart"></i></a>
                 </div>
             </div>
         </header>
@@ -104,6 +108,20 @@ echo <<<EOT
 EOT;
 }
 
+function usrpanel_menubar(){
+    echo <<<EOT
+        <br>
+        <div class="usrbuttons">
+            <div><a href="index.php?page=editdo">Edytuj dane osobowe</a></div>
+            <div><a href="index.php?page=editpass">Zmień hasło</a></div>
+            <div><a href="index.php?page=usrpanel">Bieżące zamówienia</a></div>
+            <div><a href="index.php?page=ordershistory">Historia zamówień</a></div>
+            <div><a href="index.php?usrlogout=1">Wyloguj</a></div>
+        </div>
+        <br><br>
+    EOT;
+}
+
 function template_footer() {
 echo <<<EOT
             </main>
@@ -122,5 +140,10 @@ function validate($data) {
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
+}
+
+function status_zam($status, $value){
+    if($status == $value)
+        return 'selected';
 }
 ?>

@@ -349,7 +349,7 @@ footer div a {
 	margin: 0 10px;
 	font-size: 12px;
 }
-main .admlogin input[type="text"], main .admlogin input[type="password"]{
+main .admlogin input[type="text"], main .admlogin input[type="password"], main .admlogin input[type="tel"], main .admlogin input[type="email"]{
 	width: 200px;
 	padding: 10px;
 	border: 1px solid #ccc;
@@ -628,6 +628,6 @@ main .admlogin button:hover {
     display: -moz-inline-box;
     *display: inline; 
     zoom: 1; 
-    width: 24.5%;
+    width: 19.5%;
     text-align: center;
 }

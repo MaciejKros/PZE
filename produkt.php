@@ -18,7 +18,7 @@ if (isset($_GET['id'])) {
     <img src="imgs/<?=isset($produkt['img'])&&!empty($produkt['img']) ? $produkt['img']:'default.jpg'?>" width="500" height="500" alt="<?=$produkt['nazwa']?>">
     <div>
         <h1 class="name"><?=$produkt['nazwa']?></h1>
-        <span class="price"><?=$produkt['cena']?>&#122;&#322;</span>
+        <span class="price"><del><?=$produkt['staracena'] ?></del> <?=$produkt['cena']?>&#122;&#322;</span>
         <form action="index.php?page=koszyk" method="post">
             <input type="number" name="ilosc" value="1" min="1" placeholder="Ilość" required>
             <input type="hidden" name="produkt_id" value="<?=$produkt['id']?>">
