@@ -50,13 +50,19 @@ echo <<<EOT
                     <div>
                         <a href="index.php?page=kontakt">Kontakt</a>
                     </div>
-                </nav>
+
+                    <div class="search-container">
+                        <form action="index.php?page=search" method="post">
+                            <input type="text" placeholder="Znajdz.." name="search">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
                 
-                <div class="link-icons">
+                    <div class="link-icons">
 EOT;
 if(isset($_SESSION['user']) && !empty($_SESSION['user'])){//////admin zmienić na user
     echo <<<EOT
-                    <a href="index.php?page=usrpanel">Witaj, 
+                        <a href="index.php?page=usrpanel">Witaj, 
     EOT; 
     echo $_SESSION['user'].' ';
     echo <<<EOT
@@ -64,13 +70,14 @@ if(isset($_SESSION['user']) && !empty($_SESSION['user'])){//////admin zmienić n
     EOT;  
 }else{   
     echo <<<EOT
-                    <a href="index.php?page=usrlogin">Zaloguj się <i class="fas fa-user"></i></a>
+                        <a href="index.php?page=usrlogin">Zaloguj się <i class="fas fa-user"></i></a>
     EOT;  
 }
 
 echo <<<EOT
-                    <a href="index.php?page=koszyk">Koszyk <i class="fas fa-shopping-cart"></i></a>
-                </div>
+                        <a href="index.php?page=koszyk">Koszyk <i class="fas fa-shopping-cart"></i></a>
+                    </div>
+                </nav>
             </div>
         </header>
         <main>

@@ -61,9 +61,6 @@ if($errNum==0 && isset($_POST['send'])){
 ?>
 
 <?=template_header('Kontakt')?>
-<br>
-TO DO: zrobić dobrze działające pole tekstowe wiadmości oraz enter nie wysyła formy
-<br>
 <div class="kontakt content-wrapper">
     <form method="post" action="index.php?page=kontakt" class="daneosobowe">
         <div>
@@ -93,7 +90,7 @@ TO DO: zrobić dobrze działające pole tekstowe wiadmości oraz enter nie wysy�
         </div>
         <div>
             <label>Wiadomość:<span class="error">*<?=$wiadomoscerr ?></span><br></label>
-            <input type="text" name="wiadomosc" value="<?=$wiadomosc ?>">
+            <textarea name="wiadomosc" rows="8" cols="80"></textarea>
             
         </div>
         <div>
