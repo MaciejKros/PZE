@@ -54,7 +54,7 @@ if(isset($_POST['send'])){
 
 if($errNum==0 && isset($_POST['send'])){
     $wiadomosc = $wiadomosc.'<br>'.$imie.' '.$nazwisko.'<br>'.$email;
-    $to='zamowienia@pseudosklep.com';
+    $to='zamowienia@softronic.com';
     mail($to, $temat, $wiadomosc);
     header('Location: index.php?page=kontkatpodziekowanie');
 }

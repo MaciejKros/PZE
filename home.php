@@ -4,13 +4,13 @@ $polecenie->execute();
 $produkty = $polecenie->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<?=template_header('Home')?>
+<?=template_header('Softronic Shop')?>
 
 <div class="featured">
-    <h2>Pseudosklep</h2>
+    <h2>SOFTRONIC SHOP</h2>
 </div>
 <div class="recentlyadded content-wrapper">
-    <h2>Nowości:</h2>
+    <h2>Nowości w naszej ofercie:</h2>
     <div class="products">
         <?php foreach ($produkty as $produkt): ?>
         <a href="index.php?page=produkt&id=<?=$produkt['id']?>" class="product">

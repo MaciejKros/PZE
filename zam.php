@@ -107,7 +107,7 @@ if (isset($_POST['ptw']) && isset($_SESSION['koszyk']) && !empty($_SESSION['kosz
             $polecenie->execute([$zam_id, $produkt['id'], $liczba_w_koszyku[$produkt['id']]]);
         }
         $message = $message.'Razem:  '.$wSumie.'PLN';
-        $to='zamowienia@pseudosklep.com';
+        $to='zamowienia@softronic.com';
         $subject='Zamówienie';
         mail($to, $subject, $message);
         unset($_POST);
@@ -131,7 +131,7 @@ if (isset($_POST['loggedptw']) && isset($_SESSION['koszyk']) && !empty($_SESSION
         $polecenie->execute([$zam_id, $produkt['id'], $liczba_w_koszyku[$produkt['id']]]);
     }
     $message = $message.'Razem:  '.$wSumie.'PLN';
-    $to='zamowienia@pseudosklep.com';
+    $to='zamowienia@softronic.com';
     $subject='Zamówienie';
     mail($to, $subject, $message);
     unset($_POST);

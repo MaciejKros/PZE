@@ -20,7 +20,7 @@ echo <<<EOT
 	<head>
 		<meta charset="UTF-8">
 		<title>$title</title>
-		<link href="style.css" rel="stylesheet" type="text/css">
+		<link href="css/style.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 	</head>
 	<body>
@@ -28,7 +28,7 @@ echo <<<EOT
             <div class="content-wrapper">
                 <nav>
                     <div>
-                        <a href="index.php">Pseudosklep</a>
+                        <a href="index.php">Strona główna</a>
                     </div>
                     <div class="dropdown">
                         <button class="dropbtn">Produkty</button>
@@ -52,8 +52,8 @@ echo <<<EOT
                     </div>
 
                     <div class="search-container">
-                        <form action="index.php?page=search" method="post">
-                            <input type="text" placeholder="Znajdz.." name="search">
+                        <form class= "search-form "action="index.php?page=search" method="post">
+                            <input type="text" placeholder="Znajdź program..." name="search">
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
@@ -90,14 +90,14 @@ echo <<<EOT
 	<head>
 		<meta charset="UTF-8">
 		<title>$title</title>
-		<link href="style.css" rel="stylesheet" type="text/css">
+		<link href="css/style.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 	</head>
 	<body>
         <header>
             <div class="content-wrapper">
                 <nav>
-                    <a href="index.php">Pseudosklep</a>
+                    <a href="index.php">Powrót na stronę główną</a>
 EOT;
 if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])){
 echo <<<EOT

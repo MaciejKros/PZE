@@ -90,13 +90,13 @@ header .link-icons a span {
 main .featured {
 	display: flex;
 	flex-direction: column;
-	background-image: url(imgs/wazny_obrazek.jpg);
+	background-image: url(../imgs/wazny_obrazek.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 300px;
 	align-items: center;
 	justify-content: center;
-	text-align: center;
+	text-align: center;	
 }
 main .featured h2 {
 	display: inline-block;
@@ -652,7 +652,6 @@ main .admlogin button:hover {
     float: right;
     padding: 6px 10px;
     margin-top: 0px;
-    margin-right: 16px;
     background: #ddd;
     font-size: 16px;
     border: none;
@@ -661,4 +660,9 @@ main .admlogin button:hover {
 
 .search-container button:hover {
     background: #ccc;
+}
+
+.search-container form {
+	border: 2px solid #ccc;
+	border-radius: 4px;
 }
