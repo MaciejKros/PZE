@@ -13,18 +13,28 @@ body {
 	min-height: 100%;
 	color: #555555;
 	background-color: #FFFFFF;
+	/* Background pattern from Toptal Subtle Patterns */
+	background-image: url("../imgs/dust_scratches.png");
 	margin: 0;
-	padding-bottom: 100px; 
+	padding-bottom: 100px;
 }
 h1, h2, h3, h4, h5 {
-	color: #394352;
+	color: #394352;	
 }
+
+h1 {
+	font-size: 30px;
+	border-bottom: 1px solid #394352;
+	padding-bottom: 12px;
+}
+
 .content-wrapper {
 	width: 1050px;
 	margin: 0 auto;
 }
 header {
 	border-bottom: 1px solid #EEEEEE;
+	background-color: #fff;
 }
 header .content-wrapper {
 	display: flex;
@@ -103,9 +113,13 @@ main .featured h2 {
 	margin: 0;
 	width: 1050px;
 	font-family: Rockwell, Courier Bold, Courier, Georgia, Times, Times New Roman, serif;
-	font-size: 68px;
+	font-size: 100px;
 	color: #FFFFFF;
 	padding-bottom: 10px;
+	color: black;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
 }
 main .featured p {
 	display: inline-block;
@@ -118,7 +132,7 @@ main .recentlyadded h2 {
 	display: block;
 	font-weight: normal;
 	margin: 0;
-	padding: 40px 0;
+	padding: 20px 0;
 	font-size: 24px;
 	text-align: center;
 	width: 100%;
@@ -232,6 +246,7 @@ main > .products .buttons a {
 main > .products .buttons a:hover {
 	background: #434f61;
 }
+/*
 main .cart h1 {
 	display: block;
 	font-weight: normal;
@@ -241,19 +256,21 @@ main .cart h1 {
 	text-align: center;
 	width: 100%;
 }
+*/
 main .cart table {
 	width: 100%;
 }
 main .cart table thead td {
-	padding: 30px 0;
-	border-bottom: 1px solid #EEEEEE;
+	padding: 15px 0;
+	/*border-bottom: 1px solid #000000;*/
+}
+main .cart table tr{
 }
 main .cart table thead td:last-child {
 	text-align: right;
 }
 main .cart table tbody td {
 	padding: 20px 0;
-	border-bottom: 1px solid #EEEEEE;
 }
 main .cart table tbody td:last-child {
 	text-align: right;
@@ -331,6 +348,7 @@ footer {
 	border-top: 1px solid #EEEEEE;
 	padding: 20px 0;
 	width: 100%;
+	background-color: #fff;
 }
 footer .content-wrapper {
 	display: flex;
@@ -350,12 +368,12 @@ footer div a {
 	font-size: 12px;
 }
 main .admlogin input[type="text"], main .admlogin input[type="password"], main .admlogin input[type="tel"], main .admlogin input[type="email"]{
-	width: 200px;
+	width: 100%;
 	padding: 10px;
 	border: 1px solid #ccc;
 	color: #555555;
 	border-radius: 5px;
-        margin: 8px 0;
+    margin: 8px 0;
 }
 main .admlogin button {
 	text-align: left;
@@ -646,6 +664,7 @@ main .admlogin button:hover {
     margin-top: 0px;
     font-size: 16px;
     border: none;
+	width:260px;
 }
 
 .search-container button {
@@ -665,4 +684,23 @@ main .admlogin button:hover {
 .search-container form {
 	border: 2px solid #ccc;
 	border-radius: 4px;
+	width: 300px;
+}
+
+p {
+	margin 0 0 10px;
+}
+
+a {
+	text-decoration: underline;
+}
+
+a, a:hover, a:focus {
+	/*text-decoration: none;*/
+	color: inherit;
+	outline: none;
+}
+
+.news {
+	font-size: 20px;
 }

@@ -9,8 +9,17 @@ $produkty = $polecenie->fetchAll(PDO::FETCH_ASSOC);
 <div class="featured">
     <h2>SOFTRONIC SHOP</h2>
 </div>
+
+
+
 <div class="recentlyadded content-wrapper">
-    <h2>Nowości w naszej ofercie:</h2>
+    <h1>O firmie</h1>
+	<div class="news">
+	Od początku swojej działalności tj. od 2012 roku zajmujemy się dostarczaniem rozwiązań informatycznych dla biznesu. Nasza siedziba znajduje się w Warszawie. Na terenie Polski dostarczamy sprawdzone oprogramownie od zaufanych dostawców. Opracowujemy również 
+	oprogramownie na indywidualne zamówienie naszych klientów.
+
+	</div>
+	<h1>Nowości w naszej ofercie</h1>
     <div class="products">
         <?php foreach ($produkty as $produkt): ?>
         <a href="index.php?page=produkt&id=<?=$produkt['id']?>" class="product">

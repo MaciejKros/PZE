@@ -36,7 +36,7 @@ if(isset($_POST['usrupdate'])){
 <?=template_header('Edytuj dane osobowe')?>
 <div class="admlogin content-wrapper usrpanel">
     <?=usrpanel_menubar(); ?>
-    <h1>Edytuj dane osobowe.</h1>
+    <h1>Edytuj dane osobowe</h1>
     <form action="index.php?page=editdo" method="post">
         <div>
             <label>Email:</label>

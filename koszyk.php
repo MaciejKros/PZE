@@ -70,9 +70,8 @@ if (isset($_POST['zam']) && isset($_SESSION['koszyk']) && !empty($_SESSION['kosz
 ?>
 
 <?=template_header('Koszyk')?>
-
 <div class="cart content-wrapper">
-    <h1>Koszyk</h1>
+	<h1>Koszyk</h1>
     <form action="index.php?page=koszyk" method="post">
         <table>
             <thead>
