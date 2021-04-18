@@ -6,7 +6,7 @@ $produkty = $polecenie->fetchAll(PDO::FETCH_ASSOC);
 
 <?=template_header('Promocje')?>
 <div class="recentlyadded content-wrapper">
-    <h2>Promocje:</h2>
+    <h1>Promocje</h1>
     <div class="products">
         <?php foreach ($produkty as $produkt): ?>
         <a href="index.php?page=produkt&id=<?=$produkt['id']?>" class="product">

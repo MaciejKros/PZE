@@ -15,7 +15,7 @@ if(isset($_GET['kat_id']) && is_numeric($_GET['kat_id'])){
 
 <?=template_header($kategoria['nazwa'])?>
 <div class="recentlyadded content-wrapper">
-    <h2><?= $kategoria['nazwa'] ?>:</h2>
+    <h1><?= $kategoria['nazwa'] ?></h1>
     <div class="products">
         <?php foreach ($kategoria_produkty as $kp): ?>
         <?php 
