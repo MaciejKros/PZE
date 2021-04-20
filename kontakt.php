@@ -72,7 +72,7 @@ if($errNum==0 && isset($_POST['send'])){
 				Jesteśmy do dyspozycji od poniedziałku do piątku w godzinach 8:30 - 16:30.
 			</h2>
 				<p>
-					<strong>Softronic Shop Spółka z ograniczoną odpowiedzialnością</strong><br>
+					<strong>Softronic Shop Sp. z o.o.</strong><br>
 					Aleje Jerozolimskie 135<br>
 					02-495 Warszawa
 				</p>
@@ -94,7 +94,7 @@ if($errNum==0 && isset($_POST['send'])){
 					</a><br>
 					Dział Techniczny: 
 					<a href="mailto:serwis@softronic.pl">
-					biuro@softronic.pl
+					serwis@softronic.pl
 					</a>
 					
 				</p>
@@ -133,7 +133,7 @@ if($errNum==0 && isset($_POST['send'])){
             
         </div>
         <div>
-            <button type="submit" name="send">Wyślij</button>
+            <button type="submit" name="send">Wyślij wiadomość</button>
         </div>
     </form>
 </div>

@@ -22,6 +22,7 @@ echo <<<EOT
 		<title>$title</title>
 		<link href="css/style.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+		<link rel="shortcut icon" href="css/favicon.ico">
 	</head>
 	<body>
         <header>
@@ -92,6 +93,7 @@ echo <<<EOT
 		<title>$title</title>
 		<link href="css/style.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+		<link rel="shortcut icon" href="css/favicon.ico">
 	</head>
 	<body>
         <header>

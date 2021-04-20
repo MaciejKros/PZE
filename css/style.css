@@ -186,17 +186,18 @@ main > .product h1 {
 	padding: 20px 0 10px 0;
 }
 main > .product .price {
+	margin: 20px 0;
 	display: block;
 	font-size: 22px;
-	color: #999999;
+	font-weight: 700;
 }
 main > .product form {
 	display: flex;
 	flex-flow: column;
-	margin: 40px 0;
+	margin: 20px 0;
 }
 main > .product form input[type="number"] {
-	width: 400px;
+	width: 100px;
 	padding: 10px;
 	margin-bottom: 15px;
 	border: 1px solid #ccc;
@@ -207,7 +208,7 @@ main > .product form input[type="submit"] {
 	background: #4e5c70;
 	border: 0;
 	color: #FFFFFF;
-	width: 400px;
+	width: 200px;
 	padding: 12px 0;
 	text-transform: uppercase;
 	font-size: 14px;
@@ -368,19 +369,19 @@ footer div a {
 	font-size: 12px;
 }
 main .admlogin input[type="text"], main .admlogin input[type="password"], main .admlogin input[type="tel"], main .admlogin input[type="email"]{
-	width: 100%;
+	/*width: 100%;*/
 	padding: 10px;
 	border: 1px solid #ccc;
 	color: #555555;
 	border-radius: 5px;
     margin: 8px 0;
 }
+
 main .admlogin button {
+	/*margin-left: 5px;*/
 	text-align: left;
 	padding-bottom: 40px;
-}
-main .admlogin button {
-	margin-left: 5px;
+	margin-top: 10px;
 	padding: 12px 20px;
 	border: 0;
 	background: #4e5c70;
@@ -701,6 +702,30 @@ a, a:hover, a:focus {
 	outline: none;
 }
 
+.register_column {
+float: left;
+margin-right: 100px;
+}
+
 .news {
 	font-size: 20px;
+}
+
+#addtocart {
+	float: left;
+}
+
+.inputlogin {
+	width: 250px;
+}
+.inputdata {
+	width: 350px;
+}
+
+.inputzipcode {
+	width: 115px;
+}
+
+.inputcity {
+	width: 225px;
 }

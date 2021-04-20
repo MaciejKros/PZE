@@ -80,18 +80,18 @@ if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
 	
 	<form action="index.php?page=usrlogin" method="post">
         <div>
-            <label>Login</label>
-            <input type="text" name="login" required>
+            <!-- <label>Login</label><br> -->
+            <input class="inputlogin" type="text" placeholder="Login" name="login" required>
         </div>
         <div>
-            <label>Hasło</label>
-            <input type="password" name="password" required>
+            <!-- <label>Hasło</label><br> -->
+            <input class="inputlogin" type="password" placeholder ="Hasło" name="password" required>
         </div>
         <div>
             <?=$login_error ?>
         </div>
         <div>
-            <button type="submit" name="usrlogin">Zaloguj</button>
+            <button type="submit" name="usrlogin">Zaloguj się</button>
         </div>        
     </form>
     
@@ -100,60 +100,69 @@ if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
     
     
     <form action="index.php?page=usrlogin" method="post">
-        <div>
-            <label>Login</label><span class="error">*</span>
-            <input type="text" name="newlogin" pattern="[a-żA-Ż0-9-]+" size="20" value="<?= $newlogin;?>" required>
-            
-        </div>
-        <div>
-            <label>Hasło</label><span class="error">*</span>
-            <input type="password" name="password1" size="20" required>
-            
-        </div>
-        <div>
-            <label>Powtórz hasło</label><span class="error">*</span>
-            <input type="password" name="password2" size="20" required>
-            
-        </div>
-        <div>
-            <label>Email</label><span class="error">*</span>
-            <input type="email" name="email" value="<?= $email;?>" size="30" required>
-            
-        </div>
-        <div>
-            <label>Imie</label><span class="error">*</span>
-            <input type="text" name="imie" pattern="[a-żA-Ż0-9-]+" size="20" value="<?= $imie;?>" required>
-            
-        </div>
-        <div>
-            <label>Nazwisko</label><span class="error">*</span>
-            <input type="text" name="nazwisko" pattern="[a-żA-Ż0-9-]+" size="20" value="<?= $nazwisko;?>" required>
-            
-        </div>
-        <div>
-            <label>Miasto</label><span class="error">*</span>
-            <input type="text" name="city" value="<?= $city;?>" size="30" required>
-            
-        </div>
-        <div>
-            <label>Adres</label><span class="error">*</span>
-            <input type="text" name="adres" value="<?= $adres;?>" size="30" required>
-          
-        </div>
-        <div>
-            <label>Kod pocztowy</label><span class="error">*</span>
-            <input type="text" name="zip" value="<?= $zip;?>" pattern="[0-9\-]*" required>
-            
-        </div>
-        <div>
-            <label>Numer telefonu</label><span class="error">*</span>
-            <input type="tel" name="phone" value="<?= $phone;?>" pattern="[0-9]{9}" required>
-            
-        </div>
-        <div class="error">
-            <?=$register_error ?>
-        </div><br>
-        <div>
+        
+		<div class="register_column">
+		<h2>Dane podstawowe</h2>
+			<div>
+				<label>Login</label><span class="error">*</span><br>
+				<input class="inputlogin"type="text" name="newlogin" pattern="[a-żA-Ż0-9-]+" size="20" value="<?= $newlogin;?>" required>
+				
+			</div>
+			<div>
+				<label>Hasło</label><span class="error">*</span><br>
+				<input class="inputlogin" type="password" name="password1" size="20" required>
+				
+			</div>
+			<div>
+				<label>Powtórz hasło</label><span class="error">*</span><br>
+				<input class="inputlogin" type="password" name="password2" size="20" required>
+				
+			</div>
+			<div>
+				<label>Email</label><span class="error">*</span><br>
+				<input class="inputlogin" type="email" name="email" value="<?= $email;?>" size="30" required>
+			</div>
+			<div>
+				<label>Numer telefonu</label><span class="error">*</span><br>
+				<input class="inputlogin" type="tel" name="phone" value="<?= $phone;?>" pattern="[0-9]{9}" required>
+				
+			</div>
+		</div>
+		
+		<div class="register_column">
+			<h2>Dane do faktur i licencji</h2>
+			
+			<div>
+				<label>Imie</label><span class="error">*</span><br>
+				<input class="inputdata" type="text" name="imie" pattern="[a-żA-Ż0-9-]+" size="20" value="<?= $imie;?>" required>
+				
+			</div>
+			<div>
+				<label>Nazwisko</label><span class="error">*</span><br>
+				<input class="inputdata" type="text" name="nazwisko" pattern="[a-żA-Ż0-9-]+" size="20" value="<?= $nazwisko;?>" required>
+				
+			</div>
+			<div>
+				<label>Adres (ulica i nr domu)</label><span class="error">*</span><br>
+				<input class="inputdata" type="text" name="adres" value="<?= $adres;?>" size="30" required>
+			  
+			</div>
+			
+			<div style="float: left">
+				<label>Kod pocztowy</label><span class="error">*</span><br>
+				<input class="inputzipcode" type="text" name="zip" value="<?= $zip;?>" pattern="[0-9\-]*" required>				
+			</div>
+			 
+			<div style="float: left; margin-left: 10px">
+				<label>Miasto</label><span class="error">*</span><br>
+				<input class="inputcity" type="text" name="city" value="<?= $city;?>" size="30" required>
+			</div>
+			<div class="error" style="clear: both">
+				* pola wymagane
+				<?=$register_error ?>
+			</div><br>
+		</div>
+        <div style="clear: both">
             <button type="submit" name="usradd">Zarejestruj</button>
         </div>        
     </form>

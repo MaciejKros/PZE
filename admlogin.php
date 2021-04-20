@@ -30,21 +30,23 @@ if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])){
 <?=template_header_adm('Zaloguj się')?>
 
 <div class="admlogin content-wrapper">
+	<h1>Content Management System</h1>
+	<h2>Zaloguj się do Systemu Zarządzania Treścią</h2>
     <form action="index.php?page=admlogin" method="post">
-        <div>
-            <label>Login:</label>
-            <input type="text" name="login" required>
-        </div>
-        <div>
-            <label>Hasło:</label>
-            <input type="password" name="password" required>
-        </div>
-        <div>
-            <?=$login_error ?>
-        </div>
-        <div>
-            <button type="submit" name="admlogin">Login</button>
-        </div>        
+		<div>
+			<!-- <label>Login:</label> -->
+			<input class="inputlogin" type="text" name="login" required placeholder="Login">
+		</div>
+		<div>
+			<!-- <label>Hasło:</label> -->
+			<input class="inputlogin" type="password" name="password" required placeholder="Hasło">
+		</div>
+		<div>
+			<?=$login_error ?>
+		</div>
+		<div>
+			<button type="submit" name="admlogin">Zaloguj się</button>
+		</div>        
     </form>
 </div>
 
