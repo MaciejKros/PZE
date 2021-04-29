@@ -3,6 +3,16 @@ if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
     header("location: index.php");
     exit;
 }
+$komunikat = '';
+
+
+if(isset($_GET['kom'])){
+    if($_GET['kom']==1){
+        $komunikat = 'Udało się zmienić hasło.';
+    } else if($_GET['kom']==2){
+        $komunikat = 'Udało się zmienić dane osobowe.';
+    }
+}
 
 $polecenie = $pdo->prepare('SELECT * FROM zamowienia WHERE login = ? AND NOT status = ? ORDER BY data DESC');
 $polecenie->execute([$_SESSION['user'], 'done']);
@@ -13,11 +23,16 @@ $zamowienia = $polecenie->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="content-wrapper usrpanel zamowienia">
     <?=usrpanel_menubar(); ?>
+    
+    <div>
+        <?=$komunikat; ?>
+    </div>
+    
     <?php 
     if(!empty($zamowienia)){
-        echo <<<EOT
-            <h2>Zamówienia w trakcie realizacji:</h2>
-        EOT;
+        echo '<h2>Zamówienia w trakcie realizacji:</h2>';
+    } else {
+        echo '<h2>Brak bieżących zamówień.</h2>';
     }
     ?>
     <?php foreach($zamowienia as $zamowienie): ?>

@@ -301,6 +301,12 @@ main .cart table input[type="number"] {
 	color: #555555;
 	border-radius: 5px;
 }
+@-moz-document url-prefix() {
+    main .cart table input[type="number"] {
+	padding: 10px 0px 10px 10px;
+        /* padding:10px w mozzili i explorerze i pewnie w jakiś starszych przeglądarkach nachodzi na strzałki*/
+    }
+}
 main .cart .subtotal {
 	text-align: right;
 	padding: 40px 0;
@@ -689,7 +695,7 @@ main .admlogin button:hover {
 }
 
 p {
-	margin 0 0 10px;
+	margin: 0 0 10px;
 }
 
 a {

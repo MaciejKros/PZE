@@ -101,7 +101,7 @@ if (isset($_POST['zam']) && isset($_SESSION['koszyk']) && !empty($_SESSION['kosz
                     </td>
                     <td class="price"><?=$produkt['cena']?>&#122;&#322;</td>
                     <td>
-                        <input type="number" name="ilosc-<?=$produkt['id']?>" value="<?=$liczba_w_koszyku[$produkt['id']]?>" min="1" placeholder="Ilość" required>
+                        <input type="number" class="iloscClass" name="ilosc-<?=$produkt['id']?>" value="<?=$liczba_w_koszyku[$produkt['id']]?>" min="1" placeholder="Ilość" required>
                     </td>
                     <td><a href="index.php?page=koszyk&usun=<?=$produkt['id']?>" class="remove">Usuń</a></td>
                     <td class="price"><?=$produkt['cena'] * $liczba_w_koszyku[$produkt['id']]?>&#122;&#322;</td>
@@ -115,10 +115,22 @@ if (isset($_POST['zam']) && isset($_SESSION['koszyk']) && !empty($_SESSION['kosz
             <span class="price"><?=$wSumie?>&#122;&#322;</span>
         </div>
         <div class="buttons">
-            <input type="submit" value="Odśwież" name="update">
+            <input type="submit" value="Odśwież" name="update" id="updateButton" hidden>
             <input type="submit" value="Zamów" name="zam">
         </div>
     </form>
 </div>
+
+<script>
+    var inputArray = document.getElementsByClassName("iloscClass");//.addEventListener("change", updateForm);
+        
+    for(var i=0; i<inputArray.length; i++){
+        inputArray[i].addEventListener("change", updateForm);
+    }
+    
+    function updateForm() {
+        document.getElementById("updateButton").click();
+    }
+</script>
 
 <?=template_footer()?>

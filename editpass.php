@@ -5,6 +5,7 @@ if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
 }
 
 $newpassword1 = $newpassword2 = $password = $error = '';
+
 if(isset($_POST['passupdate'])){
     $newpassword1 = validate($_POST['newpassword1']);
     $newpassword2 = validate($_POST['newpassword2']);
@@ -24,7 +25,11 @@ if(isset($_POST['passupdate'])){
         if(!empty($oldpass) && isset($oldpass)){
             $polecenie = $pdo->prepare('Update users SET password = ? WHERE login = ?');
             $polecenie->execute([$newpassword1, $_SESSION['user']]);
-            header('location: index.php?page=usrpanel');
+            if($polecenie->rowCount()>0){
+                header('location: index.php?page=usrpanel&kom=1');
+            } else {
+                header('location: index.php?page=usrpanel');
+            }
             exit;
         } else{
             $error = 'Błędne stare hasło.';

@@ -3,7 +3,7 @@ if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
     header("location: index.php");
     exit;
 }
-$error = '';
+$error = $komunikat = '';
 $polecenie = $pdo->prepare('Select email, imie, nazwisko, city, adres, zip, phone from users where login = ?');
 $polecenie->execute([$_SESSION['user']]);
 $daneosobowe = $polecenie->fetch(PDO::FETCH_ASSOC);
@@ -28,7 +28,11 @@ if(isset($_POST['usrupdate'])){
     
     $polecenie = $pdo->prepare('Update users SET email=?, imie=?, nazwisko=?, city=?, adres=?, zip=?, phone=? WHERE login = ?');
     $polecenie->execute([$email, $imie, $nazwisko, $city, $adres, $zip, $phone, $_SESSION['user']]);
-    header('location: index.php?page=editdo');
+    if($polecenie->rowCount()>0){
+        header('location: index.php?page=usrpanel&kom=2');
+    } else {
+        header('location: index.php?page=editdo');
+    }
     exit;
 }
 ?>
@@ -38,6 +42,9 @@ if(isset($_POST['usrupdate'])){
     <?=usrpanel_menubar(); ?>
     <h1>Edytuj dane osobowe</h1>
     <form action="index.php?page=editdo" method="post">
+        <div>
+            <?=$komunikat; ?>
+        </div>
         <div>
             <label>Email:</label>
             <input type="email" name="email" value="<?= $email;?>" size="30" required>

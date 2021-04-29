@@ -15,7 +15,7 @@ if (isset($_GET['logout']) && !empty($_GET['logout']) && is_numeric($_GET['logou
 if (isset($_GET['usrlogout']) && !empty($_GET['usrlogout']) && is_numeric($_GET['usrlogout'])) {
 	session_destroy();
 	unset($_SESSION['user']);
-	header("location: index.php");
+	header("location: index.php?kom=1");
         exit;
 }
 if(($page == 'panel' || $page == 'zamowienia' || $page == 'kategorie')){

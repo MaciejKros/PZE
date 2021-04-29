@@ -7,6 +7,10 @@ if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
 $polecenie = $pdo->prepare('SELECT * FROM zamowienia WHERE login = ? AND status = ? ORDER BY data DESC');
 $polecenie->execute([$_SESSION['user'], 'done']);
 $zamowienia = $polecenie->fetchAll(PDO::FETCH_ASSOC);
+
+if(empty($zamowienia)){
+    
+}
 ?>
 
 
@@ -16,9 +20,9 @@ $zamowienia = $polecenie->fetchAll(PDO::FETCH_ASSOC);
     <?=usrpanel_menubar(); ?>
     <?php 
     if(!empty($zamowienia)){
-        echo <<<EOT
-            <h2>Historia zamówień:</h2>
-        EOT;
+        echo '<h2>Historia zamówień:</h2>';
+    } else {
+        echo '<h2>Historia zamówień jest pusta.</h2>';
     }
     ?>
     <?php foreach($zamowienia as $zamowienie): ?>

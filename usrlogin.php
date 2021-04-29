@@ -56,7 +56,7 @@ if(isset($_POST['usradd'])){
             $polecenie = $pdo->prepare('Insert INTO users (login, password, email, imie, nazwisko, city, adres, zip, phone) VALUES (?,?,?,?,?,?,?,?,?)');
             $polecenie->execute([$newlogin, $password1, $email, $imie, $nazwisko, $city, $adres, $zip, $phone]);
             $_SESSION['user'] = $newlogin;
-            header('location: index.php?page=usrpanel');
+            header('location: index.php?kom=2');
             exit;
         }
     }
