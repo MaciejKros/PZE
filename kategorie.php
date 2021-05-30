@@ -80,15 +80,9 @@ if(isset($_GET['remove_prod']) && is_numeric($_GET['remove_prod']) && isset($_GE
 ?>
 
 <?=template_header_adm('Panel administracyjny')?>
+
 <div class='content-wrapper kategorie'>
-    <table>
-            <tr class='naglowek_tabeli'>
-                <th>Id</th>
-                <th>Nazwa</th>
-                <th class="zaktualizuj"></th>
-                <th class="usun"></th>
-            </tr>
-    </table>
+	<h1>Edycja kategorii</h1>
     <?php foreach($kategorie as $kategoria): ?>
     <table>
             <tr>
@@ -101,12 +95,6 @@ if(isset($_GET['remove_prod']) && is_numeric($_GET['remove_prod']) && isset($_GE
             </tr>
     </table>
     <table class='produkty'>
-        <tr class='naglowek_tabeli'>
-            <th>Id</th>
-            <th>Nazwa</th>
-            <th class="zaktualizuj"></th>
-            <th class="usun"></th>
-        </tr>
         <?php 
         $polecenie = $pdo->prepare('SELECT * FROM kategorie_produkty WHERE kat_id=?');
         $polecenie->execute([$kategoria['id']]);

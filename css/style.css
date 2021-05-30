@@ -441,7 +441,7 @@ main .admlogin button:hover {
     width: 115px;
 }
 .zamowienia .produkty{
-    margin-left: 70px;
+    margin-left: 10px;
 }
 .kategorie td, .kategorie th{
     width: 180px;
@@ -461,7 +461,7 @@ main .admlogin button:hover {
     border: 1px solid #ccc;
 }
 .kategorie .naglowek_tabeli .zaktualizuj, .kategorie .naglowek_tabeli .usun{
-    border-style: none;
+    /*border-style: none;*/
 }
 .kategorie .naglowek_tabeli .zaktualizuj{
     width: 112px;
@@ -751,4 +751,20 @@ margin-right: 100px;
 
 .inputcity {
 	width: 225px;
+}
+
+form.search-form {
+	margin-bottom: 0px;
+}
+
+form.search-form.button {
+	padding-bottom: 2px;
+}
+
+.communique {
+	margin-top: 10px;
+	text-align: center;
+	font-weight: 700;
+	font-size: 20px;
+	color: #228B22;
 }

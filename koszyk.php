@@ -79,7 +79,7 @@ if (isset($_POST['zam']) && isset($_SESSION['koszyk']) && !empty($_SESSION['kosz
                     <td colspan="2">Produkt</td>
                     <td>Cena</td>
                     <td>Ilość</td>
-                    <td></td>
+                    <td>Akcja</td>
                     <td>Razem</td>
                 </tr>
             </thead>
@@ -111,12 +111,12 @@ if (isset($_POST['zam']) && isset($_SESSION['koszyk']) && !empty($_SESSION['kosz
             </tbody>
         </table>
         <div class="subtotal">
-            <span class="text">Razem:</span>
-            <span class="price"><?=$wSumie?>&#122;&#322;</span>
+            <span class="text"><strong>Razem:</strong></span>
+            <span class="price"><strong><?=$wSumie?>&#122;&#322;</strong></span>
         </div>
         <div class="buttons">
             <input type="submit" value="Odśwież" name="update" id="updateButton" hidden>
-            <input type="submit" value="Zamów" name="zam">
+            <input type="submit" value="Złóż zamówienie" name="zam">
         </div>
     </form>
 </div>

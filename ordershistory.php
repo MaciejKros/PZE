@@ -16,19 +16,20 @@ if(empty($zamowienia)){
     <?=usrpanel_menubar(); ?>
     <?php 
     if(!empty($zamowienia)){
-        echo '<h2>Historia zamówień:</h2>';
+        echo '<h1>Historia zamówień</h1>';
     } else {
         echo '<h2>Historia zamówień jest pusta.</h2>';
     }
     ?>
     <?php foreach($zamowienia as $zamowienie): ?>
-        <h3>Zamówienie <?=$zamowienie['id'] ?></h3>
-        Status: <?php 
+        <u><h3>Zamówienie nr <?=$zamowienie['id'] ?></h3></u>
+        <strong>Status: </strong><?php 
         if($zamowienie['status'] == 'done')
             echo 'Zakończone';
         ?>
         <br>
-        Dane do przesyłki:
+		<br>
+        <strong>Dane do przesyłki</strong>:
         <br>
         <?=$zamowienie['imie'] ?> <?=$zamowienie['nazwisko'] ?>
         <br>
@@ -38,8 +39,10 @@ if(empty($zamowienia)){
         <br>
         <?=$zamowienie['adres'] ?>
         <br>
-        Data złożenia zamówienia: <?=$zamowienie['data'] ?>
+		<br>
+        <strong>Data złożenia zamówienia:</strong> <?=$zamowienie['data'] ?>
         <br>
+		<br>
         <table class='produkty'>
             <tr class='naglowek_tabeli'>
                 <th>Id</th>
@@ -74,13 +77,9 @@ if(empty($zamowienia)){
                 <?php endforeach; ?>
             <?php endforeach; ?>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Razem:</td>
-                    <td><?= $wSumie; ?>&#122;&#322;</td>
-                    <td></td>
-                    <td></td>
+                    <td colspan="4" style="text-align: right"><strong>Razem:</strong></td>
+                    <td><strong><?= $wSumie; ?>&#122;&#322;</strong></td>
+                   
                 </tr>
         </table>
     <?php endforeach; ?>

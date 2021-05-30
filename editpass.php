@@ -39,17 +39,20 @@ if(isset($_POST['passupdate'])){
 
 <div class="admlogin content-wrapper usrpanel">
     <?=usrpanel_menubar(); ?>
-    <form action="index.php?page=editpass" method="post">
+    
+	<h1>Zmiana hasła</h1>
+	
+	<form action="index.php?page=editpass" method="post">
         <div>
-            <label>Nowe Hasło:</label>
+            <label>Nowe Hasło</label></br>
             <input type="password" name="newpassword1" size="20" required>
         </div>
         <div>
-            <label>Powtórz nowe hasło:</label>
+            <label>Powtórz nowe hasło</label></br>
             <input type="password" name="newpassword2" size="20" required>
         </div>
         <div>
-            <label>Stare hasło:</label>
+            <label>Stare hasło</label></br>
             <input type="password" name="password" size="20" required>
         </div>
         <div>

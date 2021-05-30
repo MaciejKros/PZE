@@ -44,6 +44,7 @@ if(isset($_GET['remove']) && is_numeric($_GET['remove'])){
 
 <?=template_header_adm('Panel administracyjny')?>
 <div class='panel content-wrapper'>
+<h1>Edycja produktów</h1>
     <table>
         <thead>
             <tr>

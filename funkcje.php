@@ -55,7 +55,7 @@ echo <<<EOT
                     <div class="search-container">
                         <form class= "search-form "action="index.php?page=search" method="post">
                             <input type="text" placeholder="Znajdź program..." name="search">
-                            <button type="submit"><i class="fa fa-search"></i></button>
+                            <button type="submit" style="padding-bottom: 12px"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
                 

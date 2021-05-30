@@ -177,7 +177,7 @@ if (isset($_POST['loggedptw']) && isset($_SESSION['koszyk']) && !empty($_SESSION
         echo <<<EOT
             <form action="index.php?page=zam" method="post" class="daneosobowe">
                 <div>
-                    <button type="submit" name="loggedptw">Potwierdz</button>
+                    <button type="submit" name="loggedptw">Potwierdź</button>
                 </div>
             </form> 
         EOT;   
@@ -194,43 +194,44 @@ if (isset($_POST['loggedptw']) && isset($_SESSION['koszyk']) && !empty($_SESSION
                 Zamów bez logowania.
             </h1>
         </div>
+        <h2>Dane do faktur i licencji</h2>
+			<div>
+				<label>Imie </label></br>
+				<input type="text" name="imie" value="<?=$imie ?>">
+				<span class="error">*<?=$imieerr ?></span>
+			</div>
+			<div>
+				<label>Nazwisko </label></br>
+				<input type="text" name="nazwisko" value="<?=$nazwisko ?>">
+				<span class="error">*<?=$nazwiskoerr ?></span>
+			</div>
+			<div>
+				<label>Miasto </label></br>
+				<input type="text" name="city" value="<?=$city ?>">
+				<span class="error">*<?=$cityerr ?></span>
+			</div>
+			<div>
+				<label>Adres </label></br>
+				<input type="text" name="adres" value="<?=$adres ?>">
+				<span class="error">*<?=$adreserr ?></span>
+			</div>
+			<div>
+				<label>Kod pocztowy </label></br>
+				<input type="text" name="zip" value="<?=$zip ?>">
+				<span class="error">*<?=$ziperr ?></span>
+			</div>
+			<div>
+				<label>Email </label></br>
+				<input type="text" name="email" value="<?=$email ?>">
+				<span class="error">*<?=$emailerr ?></span>
+			</div>
+			<div>
+				<label>Numer telefonu </label></br>
+				<input type="number" name="telefon" value="<?=$telefon ?>">
+				<span class="error">*<?=$telefonerr ?></span>
+			</div>
         <div>
-            <label>Imie: </label>
-            <input type="text" name="imie" value="<?=$imie ?>">
-            <span class="error">*<?=$imieerr ?></span>
-        </div>
-        <div>
-            <label>Nazwisko: </label>
-            <input type="text" name="nazwisko" value="<?=$nazwisko ?>">
-            <span class="error">*<?=$nazwiskoerr ?></span>
-        </div>
-        <div>
-            <label>Miasto: </label>
-            <input type="text" name="city" value="<?=$city ?>">
-            <span class="error">*<?=$cityerr ?></span>
-        </div>
-        <div>
-            <label>Adres: </label>
-            <input type="text" name="adres" value="<?=$adres ?>">
-            <span class="error">*<?=$adreserr ?></span>
-        </div>
-        <div>
-            <label>Kod pocztowy: </label>
-            <input type="text" name="zip" value="<?=$zip ?>">
-            <span class="error">*<?=$ziperr ?></span>
-        </div>
-        <div>
-            <label>Email: </label>
-            <input type="text" name="email" value="<?=$email ?>">
-            <span class="error">*<?=$emailerr ?></span>
-        </div>
-        <div>
-            <label>Numer telefonu: </label>
-            <input type="number" name="telefon" value="<?=$telefon ?>">
-            <span class="error">*<?=$telefonerr ?></span>
-        </div>
-        <div>
-            <button type="submit" name="ptw">Potwierdz</button>
+            <button type="submit" name="ptw">Potwierdź</button>
         </div>
     </form>    
 </div>    

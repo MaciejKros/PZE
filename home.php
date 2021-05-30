@@ -3,9 +3,9 @@ $komunikat = '';
 
 if(isset($_GET['kom'])){
     if($_GET['kom']==1){
-        $komunikat = 'Wylogowano.';
+        $komunikat = 'Wylogowano pomyślnie!';
     } else if($_GET['kom']==2){
-        $komunikat = 'Rejestracja zakończona pomyślnie.';
+        $komunikat = 'Rejestracja zakończona pomyślnie!';
     }
 }
 
@@ -13,16 +13,16 @@ $polecenie = $pdo->prepare('SELECT * FROM produkty ORDER BY data DESC LIMIT 4');
 $polecenie->execute();
 $produkty = $polecenie->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<div class="content-wrapper">
-    <?=$komunikat; ?>
-</div>
+
 <?=template_header('Softronic Shop')?>
 
 <div class="featured">
     <h2>SOFTRONIC SHOP</h2>
 </div>
 
-
+<div class="communique">
+    <?=$komunikat; ?>
+</div>
 
 <div class="recentlyadded content-wrapper">
     <h1>O firmie</h1>

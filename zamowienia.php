@@ -80,6 +80,7 @@ if(isset($_GET['remove_prod']) && is_numeric($_GET['remove_prod']) && isset($_GE
 
 <?=template_header_adm('Panel administracyjny')?>
 <div class='zamowienia' style="margin: 0 100px">
+<h1>Edycja zamówień</h1>
     <table>
             <tr class='naglowek_tabeli'>
                 <th>Id</th>

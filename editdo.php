@@ -43,38 +43,38 @@ if(isset($_POST['usrupdate'])){
             <?=$komunikat; ?>
         </div>
         <div>
-            <label>Email:</label>
+            <label>Email</label></br>
             <input type="email" name="email" value="<?= $email;?>" size="30" required>
         </div>
         <div>
-            <label>Imie:</label>
-            <input type="text" name="imie" pattern="[a-żA-Ż0-9-]+" size="20" value="<?= $imie;?>" required>
+            <label>Imię</label></br>
+            <input type="text" name="imie" pattern="[a-żA-Ż0-9-]+" size="30" value="<?= $imie;?>" required>
         </div>
         <div>
-            <label>Nazwisko:</label>
-            <input type="text" name="nazwisko" pattern="[a-żA-Ż0-9-]+" size="20" value="<?= $nazwisko;?>" required>
+            <label>Nazwisko</label></br>
+            <input type="text" name="nazwisko" pattern="[a-żA-Ż0-9-]+" size="30" value="<?= $nazwisko;?>" required>
         </div>
         <div>
-            <label>Miasto:</label>
+            <label>Miasto</label></br>
             <input type="text" name="city" value="<?= $city;?>" size="30" required>
         </div>
         <div>
-            <label>Adres:</label>
+            <label>Adres</label></br>
             <input type="text" name="adres" value="<?= $adres;?>" size="30" required>
         </div>
         <div>
-            <label>Kod pocztowy:</label>
-            <input type="text" name="zip" value="<?= $zip;?>" pattern="[0-9\-]*" required>
+            <label>Kod pocztowy</label></br>
+            <input type="text" name="zip" value="<?= $zip;?>" size ="30" pattern="[0-9\-]*" required>
         </div>
         <div>
-            <label>Numer telefonu:</label>
-            <input type="tel" name="phone" value="<?= $phone;?>" pattern="[0-9]{9}" required>
+            <label>Numer telefonu</label></br>
+            <input type="tel" name="phone" value="<?= $phone;?>" size ="30" pattern="[0-9]{9}" required>
         </div>
         <div class="error">
             <?=$error ?>
         </div><br>
         <div>
-            <button type="submit" name="usrupdate">Potwierdz</button>
+            <button type="submit" name="usrupdate">Potwierdź</button>
         </div>        
     </form>
 </div>

@@ -27,14 +27,14 @@ $zamowienia = $polecenie->fetchAll(PDO::FETCH_ASSOC);
     
     <?php 
     if(!empty($zamowienia)){
-        echo '<h2>Zamówienia w trakcie realizacji:</h2>';
+        echo '<h1>Zamówienia w trakcie realizacji</h1>';
     } else {
         echo '<h2>Brak bieżących zamówień.</h2>';
     }
     ?>
     <?php foreach($zamowienia as $zamowienie): ?>
-        <h3>Zamówienie <?=$zamowienie['id'] ?></h3>
-        Status: <?php 
+        <u><h3>Zamówienie nr <?=$zamowienie['id'] ?></h3></u>
+        <strong>Status: </strong><?php 
         if($zamowienie['status'] == 'pending'){
             echo 'W trakcie realizacji';
         } else {
@@ -42,7 +42,8 @@ $zamowienia = $polecenie->fetchAll(PDO::FETCH_ASSOC);
         }
         ?>
         <br>
-        Dane do przesyłki:
+		<br>
+        <strong>Dane do przesyłki</strong>:
         <br>
         <?=$zamowienie['imie'] ?> <?=$zamowienie['nazwisko'] ?>
         <br>
@@ -52,9 +53,11 @@ $zamowienia = $polecenie->fetchAll(PDO::FETCH_ASSOC);
         <br>
         <?=$zamowienie['adres'] ?>
         <br>
-        Data złożenia zamówienia: <?=$zamowienie['data'] ?>
+		<br>
+        <strong>Data złożenia zamówienia:</strong> <?=$zamowienie['data'] ?>
         <br>
-        <table class='produkty'>
+        <br>
+		<table class='produkty'>
             <tr class='naglowek_tabeli'>
                 <th>Id</th>
                 <th>Nazwa</th>
@@ -88,15 +91,12 @@ $zamowienia = $polecenie->fetchAll(PDO::FETCH_ASSOC);
                 <?php endforeach; ?>
             <?php endforeach; ?>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Razem:</td>
-                    <td><?= $wSumie; ?>&#122;&#322;</td>
-                    <td></td>
-                    <td></td>
+                    <td colspan="4" style="text-align: right"><strong>Razem:</strong></td>
+                    <td><strong><?= $wSumie; ?>&#122;&#322;</strong></td>
+                   
                 </tr>
         </table>
+		<br>
     <?php endforeach; ?>
     
     
