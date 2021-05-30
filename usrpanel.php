@@ -1,8 +1,5 @@
 <?php
-if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
-    header("location: index.php");
-    exit;
-}
+
 $komunikat = '';
 
 

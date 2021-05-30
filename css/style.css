@@ -337,6 +337,23 @@ main .cart .buttons input[type="submit"] {
 main .cart .buttons input[type="submit"]:hover {
 	background: #434f61;
 }
+main .cart .buttons a{
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center; 
+    margin-left: 5px;
+    padding: 13px 20px 11px 20px;
+    border: none;
+    background: #4e5c70;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer; 
+}
+main .cart .buttons a:hover{
+    background: #434f61;
+}
+
 main .placeorder h1 {
 	display: block;
 	font-weight: normal;

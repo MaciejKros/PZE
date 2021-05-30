@@ -183,7 +183,7 @@ if (isset($_POST['loggedptw']) && isset($_SESSION['koszyk']) && !empty($_SESSION
         EOT;   
     }else{
         echo <<<EOT
-        <a href="index.php?page=usrlogin">Zaloguj się</a> TO DO zrobić z tego przycisk
+        <div class="buttons"><a href="index.php?page=usrlogin">Zaloguj się</a></div>
         EOT;
     }    
     ?>
