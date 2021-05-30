@@ -13,11 +13,11 @@ $polecenie = $pdo->prepare('SELECT * FROM produkty ORDER BY data DESC LIMIT 4');
 $polecenie->execute();
 $produkty = $polecenie->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
-<?=template_header('Softronic Shop')?>
-<div>
+<div class="content-wrapper">
     <?=$komunikat; ?>
 </div>
+<?=template_header('Softronic Shop')?>
+
 <div class="featured">
     <h2>SOFTRONIC SHOP</h2>
 </div>

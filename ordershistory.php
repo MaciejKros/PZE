@@ -1,8 +1,4 @@
 <?php
-if(!(isset($_SESSION['user']) && !empty($_SESSION['user']))){
-    header("location: index.php");
-    exit;
-}
 
 $polecenie = $pdo->prepare('SELECT * FROM zamowienia WHERE login = ? AND status = ? ORDER BY data DESC');
 $polecenie->execute([$_SESSION['user'], 'done']);
