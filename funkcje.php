@@ -66,7 +66,6 @@ if(isset($_SESSION['user']) && !empty($_SESSION['user'])){//////admin zmienić n
                         <a href="index.php?page=usrpanel">Witaj, 
     EOT; 
     echo $_SESSION['user'].' ';
-	echo $_SESSION['wSumie'];
     echo <<<EOT
     <i class="fas fa-user"></i></a>
     EOT;  
